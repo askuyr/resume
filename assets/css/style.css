@@ -544,7 +544,9 @@ ul, ol { padding: 0; list-style: none; }
   object-fit: cover;
   transition: transform .7s cubic-bezier(.2, .7, .2, 1);
 }
-.case--flip .case__media img { aspect-ratio: 1 / 1; }
+.case--flip .case__media img { aspect-ratio: 16 / 10; }
+.case--flip .case__media--poster,
+.case--flip .case__media--poster img { aspect-ratio: 4 / 5; }
 .case:hover .case__media img { transform: scale(1.025); }
 
 .case__index {
@@ -583,6 +585,30 @@ ul, ol { padding: 0; list-style: none; }
   letter-spacing: .04em;
   color: rgba(241, 216, 193, .7);
 }
+
+.case__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 12px 22px;
+  border: 1px solid rgba(241, 216, 193, .32);
+  border-radius: 999px;
+  font-family: var(--display);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
+}
+.case__link:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--coffee);
+  transform: translateY(-2px);
+}
+.case__link span { font-size: 13px; line-height: 1; }
 
 /* ---------- опыт ---------- */
 .timeline {
@@ -949,4 +975,206 @@ ul, ol { padding: 0; list-style: none; }
   .contact__title { font-size: clamp(1.5rem, 7.4vw, 1.9rem); }
 }
 
+/* ---------- страница брендинга ---------- */
+.brand-hero { padding-top: clamp(128px, 16vh, 190px); }
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 34px;
+  font-family: var(--display);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  transition: color .25s ease;
+}
+.back-link:hover { color: var(--cream); }
+
+.brand-hero__title {
+  margin-top: 18px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 7.4vw, 5.6rem);
+  line-height: .94;
+  letter-spacing: -.045em;
+  text-transform: uppercase;
+  color: var(--snow);
+}
+
+.brand-hero__lead {
+  margin-top: 24px;
+  max-width: 52ch;
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.65;
+  color: rgba(255, 251, 251, .72);
+}
+
+.brand-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.brand-logos {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(12px, 1.6vw, 20px);
+}
+
+.brand-logo { grid-column: span 2; }
+.brand-logo:nth-child(4) { grid-column: 2 / span 2; }
+.brand-logo:nth-child(5) { grid-column: 4 / span 2; }
+
+.brand-logo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0;
+  border: 1px solid rgba(11, 11, 11, .08);
+  padding: clamp(20px, 2.4vw, 30px);
+  min-height: clamp(180px, 20vw, 240px);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.brand-logo img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  margin: auto;
+  object-fit: contain;
+}
+
+.brand-logo figcaption {
+  font-family: var(--display);
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, .5);
+}
+.brand-logo--dark figcaption { color: rgba(255, 251, 251, .62); }
+
+.brand-palette {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.brand-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+  border-right: 1px solid var(--line-dark);
+}
+.brand-swatch:last-child { border-right: 0; }
+
+.brand-swatch__chip {
+  display: block;
+  height: clamp(110px, 14vw, 170px);
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.brand-swatch__name {
+  padding: 0 18px;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--snow);
+}
+
+.brand-swatch__hex {
+  padding: 0 18px;
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: var(--taupe);
+}
+
+.brand-merch {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(16px, 2.2vw, 26px);
+}
+
+.brand-item { margin: 0; grid-column: span 2; }
+.brand-item:nth-child(4) { grid-column: 2 / span 2; }
+
+.brand-item img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform .6s cubic-bezier(.2, .7, .2, 1);
+}
+.brand-item:hover img { transform: translateY(-4px); }
+
+.brand-item figcaption {
+  margin-top: 12px;
+  font-family: var(--display);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.brand-next {
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.brand-next p {
+  max-width: 52ch;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.brand-next__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.btn--ghost-light {
+  border-color: rgba(11, 11, 11, .24);
+  color: var(--ink);
+}
+.btn--ghost-light:hover { border-color: var(--coffee); color: var(--coffee); }
+
+@media (max-width: 900px) {
+  .brand-logos { grid-template-columns: repeat(2, 1fr); }
+  .brand-logo,
+  .brand-logo:nth-child(4),
+  .brand-logo:nth-child(5) { grid-column: auto; }
+  .brand-item,
+  .brand-item:nth-child(4) { grid-column: auto; }
+  .brand-logo:last-child,
+  .brand-item:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - clamp(8px, 1.1vw, 13px));
+  }
+  .brand-merch { grid-template-columns: repeat(2, 1fr); }
+  .brand-palette { grid-template-columns: repeat(2, 1fr); }
+  .brand-swatch:nth-child(2n) { border-right: 0; }
+}
+
+@media (max-width: 560px) {
+  .brand-logos,
+  .brand-merch,
+  .brand-palette { grid-template-columns: 1fr; }
+  .brand-swatch { border-right: 0; border-bottom: 1px solid var(--line-dark); }
+  .brand-swatch:last-child { border-bottom: 0; }
+  .brand-logo { min-height: 0; }
+  .brand-logo img { max-width: 220px; }
+  .brand-logo:last-child,
+  .brand-item:last-child { width: auto; justify-self: stretch; }
+}
 
