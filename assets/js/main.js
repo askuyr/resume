@@ -71,14 +71,18 @@
   });
 
   if ('IntersectionObserver' in window && sections.length) {
+    var spyState = {};
+    var spyOrder = sections.filter(function (s) { return linkMap[s.id]; })
+      .map(function (s) { return s.id; });
+
     var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        var link = linkMap[entry.target.id];
-        if (!link) return;
-        if (entry.isIntersecting) {
-          Object.keys(linkMap).forEach(function (id) { linkMap[id].classList.remove('is-active'); });
-          link.classList.add('is-active');
-        }
+      entries.forEach(function (entry) { spyState[entry.target.id] = entry.isIntersecting; });
+
+      var activeId = null;
+      spyOrder.forEach(function (id) { if (spyState[id]) activeId = id; });
+
+      Object.keys(linkMap).forEach(function (id) {
+        linkMap[id].classList.toggle('is-active', id === activeId);
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
 
