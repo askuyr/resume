@@ -1372,3 +1372,5 @@ ul, ol { padding: 0; list-style: none; }
 .vd-stamp__year{font-size:10px;letter-spacing:.1em;opacity:.65}
 .vd-stamp__note{opacity:.8}
 .vd-stamp__note a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+
+.vd-stamp__logo { width: 18px; height: 18px; flex: none; }
